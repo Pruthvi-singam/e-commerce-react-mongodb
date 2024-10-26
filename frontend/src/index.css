@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add padding-top to the main content so it doesn’t go under the navbar */
+main {
+    padding-top: 500px; /* Same height as the navbar */
+  }
+  

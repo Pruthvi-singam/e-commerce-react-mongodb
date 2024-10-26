@@ -1,0 +1,15 @@
+tailwind ,farmer motion,styled -components,npm install react-icons
+
+
+<main>
+        <div style={{ padding: '20px' }}>
+          {/* Wrapper to control space between sections */}
+          <div style={{ marginBottom: '10px' }}> {/* Adjust the margin to control space */}
+            <OfferGrid /> {/* Offer Grid Component */}
+          </div>
+          <div style={{ marginBottom: '10px' }}> {/* Adjust the margin to reduce space */}
+            <CategorySection /> {/* New Category Section */}
+          </div>
+    
+        </div>
+      </main>
