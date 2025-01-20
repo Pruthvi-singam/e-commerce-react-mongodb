@@ -51,7 +51,11 @@ Below is a short demo showing the core functionality of the Auto Price System.
 
 ## 🖼️ Screenshots
 ### Home Page:
+<<<<<<< HEAD
 ![Home Page](screenshots/home.png)
+=======
+![Home Page](Screenshots/home.png)
+>>>>>>> 8eb0081d00bedd29a2c68353633d3f0e5c93d5b2
 
 ### Product Page:
 ![Product Page](Screenshots/shop.png)
