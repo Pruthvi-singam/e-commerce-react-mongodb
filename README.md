@@ -1,6 +1,6 @@
 # Auto Price System - E-commerce Platform
 
-![Auto Price System Demo](Screenshots/giphy.mp4)
+![Auto Price System Demo](Screenshots/giphy2.gif)
 
 ## 🌟 Project Overview
 **Auto Price System** is a modern e-commerce web application designed to streamline online shopping. The platform provides users with a seamless interface to browse, select, and purchase products with dynamic pricing.
