@@ -15,21 +15,22 @@ import {
   GridContainer,
   GridItem,
 } from "../StyledComponents/ProfilePageStyles";
-
+import { useAuth } from "../contexts/AuthContext";
 const ProfilePage = () => {
+  const {presentUserDetails,presentUser} = useAuth()
   const [email, setEmail] = useState("");
   const [name, setName] = useState(""); // Added state to hold the user's name
   const [profilePic, setProfilePic] = useState(defaultProfilePic);
 
   useEffect(() => {
-    const user = auth.currentUser;
-    if (user) {
+ 
+    if (presentUser) {
       // Fetch the email and name from Firebase Auth
-      setEmail(user.email);
-      setName(user.displayName || "Add your name");
+      setEmail(presentUserDetails.email);
+      setName(presentUserDetails.name);
 
       // Fetch the profile picture from Firebase Storage
-      const profilePicRef = ref(storage, `profilePics/${user.uid}.jpg`);
+      const profilePicRef = ref(storage, `profilePics.jpg`);
       getDownloadURL(profilePicRef)
         .then((url) => {
           setProfilePic(url);
@@ -40,7 +41,7 @@ const ProfilePage = () => {
         });
     } else {
       // Fallback for not authenticated users
-      setEmail("Add email");
+      setEmail("Add Email");
       setName("Add your name");
       setProfilePic(defaultProfilePic);
     }
@@ -85,11 +86,11 @@ const ProfilePage = () => {
       <GridContainer>
         <GridItem>
           <h3>Your Orders</h3>
-          <p>Track, return, or cancel an order</p>
+          <p>{presentUserDetails.purchase_history.length>0&&presentUserDetails.purchase_history.map((order)=><p>{order.product_id}</p>)}</p>
         </GridItem>
         <GridItem>
           <h3>Your Addresses</h3>
-          <p>Edit, remove, or set a default address</p>
+          <p>{presentUserDetails.address}</p>
         </GridItem>
         <GridItem>
           <h3>Login & Security</h3>

@@ -92,3 +92,20 @@ export const TotalPrice = styled.div`
   font-weight: bold;
   text-align: right;
 `;
+
+export const ProceedButton = styled.button`
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  text-align: center;
+
+  &:hover {
+    background-color: #4a00b3;
+  }
+`;

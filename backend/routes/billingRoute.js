@@ -3,6 +3,10 @@ const { productPurchase, getPurchaseHistory } = require('../controller/billingCt
 const router = express.Router();
 
 router.post('/productpurchase', productPurchase);
-router.post('/getpurchasehistory', getPurchaseHistory);
+router.post('/getpurchasehistory', (req, res, next) => {
+    console.log('Received request for purchase history:', req.body); // Log request body
+    next();
+}, getPurchaseHistory);
+
 
 module.exports = router;

@@ -3,15 +3,15 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDDGN7KwNNo1ewW3Q6zmiTUkEvUOyrJjek",
-  authDomain: "practice-cd823.firebaseapp.com",
-  databaseURL: "https://practice-cd823-default-rtdb.firebaseio.com",
-  projectId: "practice-cd823",
-  storageBucket: "practice-cd823.appspot.com",
-  messagingSenderId: "333967088554",
-  appId: "1:333967088554:web:eb4403d144dab162bfe9d3",
-  measurementId: "G-KCNR2MYCWT",
+  apiKey: "AIzaSyAsqpN0dmwo4gdlTRISyKoQT8kHMPp573o",
+  authDomain: "autopricingsystem.firebaseapp.com",
+  projectId: "autopricingsystem",
+  storageBucket: "autopricingsystem.firebasestorage.app",
+  messagingSenderId: "379059346659",
+  appId: "1:379059346659:web:0a68c3fbc07c5c04e5f9d6",
+  measurementId: "G-14PFF2849L"
 };
 
 const app = initializeApp(firebaseConfig);

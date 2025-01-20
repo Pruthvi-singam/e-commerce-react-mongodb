@@ -1,23 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
 import profilePic from "../Images/p8.png";
-import { auth } from "../firebase";
-import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthProvider";
+import { useNavigate ,useLocation} from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 import {
   ProfileContainer,
   ProfileImage,
   DropdownMenu,
   DropdownItem,
 } from "../StyledComponents/ProfileDropdownStyles";
-
+import useAuthFunctions from "../hooks/useAuth";
 const ProfileDropdown = () => {
-  const { presentUser } = useAuth();
-  console.log("Present User in ProfileDropdown:", presentUser);
+  const {signout}  = useAuthFunctions()
+  const { presentUser,adminId } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
-
+  const location = useLocation()
   const goToProfile = () => {
     navigate("/Profile");
   };
@@ -34,9 +32,10 @@ const ProfileDropdown = () => {
 
   const handleLogout = async () => {
     try {
-      await signOut(auth);
-      navigate("/login");
+      signout()
       console.log("User signed out successfully");
+      if(location.pathname=="/Profile")
+        navigate("/login")
     } catch (error) {
       console.error("Error signing out:", error);
     }
@@ -56,14 +55,23 @@ const ProfileDropdown = () => {
         alt="Profile"
         onClick={handleDropdownToggle}
       />
-      {presentUser ? (
+      {presentUser ==adminId? (
         <DropdownMenu isOpen={isOpen}>
-          <DropdownItem onClick={goToProfile}>My Profile</DropdownItem>
+    
           <DropdownItem href="/settings">Settings</DropdownItem>
           <DropdownItem href="/help">Help</DropdownItem>
           <DropdownItem onClick={handleLogout}>Logout</DropdownItem>
         </DropdownMenu>
-      ) : (
+      ) : 
+      (
+        <DropdownMenu>
+        <DropdownItem onClick={goToProfile}>My Profile</DropdownItem>
+        <DropdownItem href="/settings">Settings</DropdownItem>
+        <DropdownItem href="/help">Help</DropdownItem>
+        <DropdownItem onClick={handleLogout}>Logout</DropdownItem>
+        </DropdownMenu>
+      )
+      (
         <DropdownMenu isOpen={isOpen}>
           <DropdownItem href="/settings">Settings</DropdownItem>
           <DropdownItem href="/help">Help</DropdownItem>

@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { motion } from "framer-motion";
-import useAuth from "../hooks/useAuth";
+import useAuthFunctions from "../hooks/useAuth";
 import {
   Container,
   FormContainer,
@@ -10,9 +9,10 @@ import {
   ErrorMessage,
   Button,
 } from "../StyledComponents/SignUpPageStyles";
-
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 const SignUpPage = () => {
-  const { data, changeHandler, signUp } = useAuth();
+  const { data, changeHandler, signUp } = useAuthFunctions();
   const {
     register,
     handleSubmit,
@@ -22,12 +22,24 @@ const SignUpPage = () => {
 
   const password = watch("password");
 
-  const onSubmit = () => {
-    signUp();
+  const notifyError = (err) => {
+    toast.error(err, {
+      position: "bottom-center",
+      autoClose: 3000,
+
+    });
+  };
+
+
+  const onSubmit = async() => {
+    const result = await signUp();
+    if(result)
+      notifyError(result)
   };
 
   return (
     <Container>
+               <ToastContainer /> 
       <FormContainer
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1 }}
@@ -68,6 +80,7 @@ const SignUpPage = () => {
                 },
               })}
               value={data.mobile}
+              onChange={changeHandler}
               name="mobile"
               hasError={!!errors.mobile}
             />
@@ -139,6 +152,25 @@ const SignUpPage = () => {
             {errors.confirmPassword && (
               <ErrorMessage initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 {errors.confirmPassword.message}
+              </ErrorMessage>
+            )}
+          </div>
+
+          <div>
+            <label>Address</label>
+            <InputField
+              type="text"
+              {...register("address", {
+                required: "address is required",
+                onChange: changeHandler,
+              })}
+              value={data.address}
+              name="address"
+              hasError={!!errors.name}
+            />
+            {errors.name && (
+              <ErrorMessage initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                {errors.name.message}
               </ErrorMessage>
             )}
           </div>
