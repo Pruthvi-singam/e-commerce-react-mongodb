@@ -1,6 +1,6 @@
 # Auto Price System - E-commerce Platform
 
-![Auto Price System Demo](demo.gif)
+![Auto Price System Demo](Screenshots/giphy.mp4)
 
 ## 🌟 Project Overview
 **Auto Price System** is a modern e-commerce web application designed to streamline online shopping. The platform provides users with a seamless interface to browse, select, and purchase products with dynamic pricing.
@@ -20,6 +20,12 @@
 
 ## 🎥 Demo
 Below is a short demo showing the core functionality of the Auto Price System.
+
+### **🌐 Live Demo**
+👉 [Check out the live application here!](https://autopricesystem.netlify.app/)
+
+---
+
 
 ![Demo GIF](demo.gif)
 
@@ -45,10 +51,13 @@ Below is a short demo showing the core functionality of the Auto Price System.
 
 ## 🖼️ Screenshots
 ### Home Page:
-![Home Page](screenshots/homepage.png)
+![Home Page](screenshots/home.png)
 
 ### Product Page:
-![Product Page](screenshots/productpage.png)
+![Product Page](Screenshots/shop.png)
+
+### Profile Page:
+![Profile Page](Screenshots/profilepage.png)
 
 ## 📫 How to Reach Me
 - **LinkedIn**: [Pruthvi Singama Setti](https://www.linkedin.com/in/pruthvisingamasetti/)
